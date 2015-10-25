@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="body-plain__title">
+        <h1 class="text-center">Sign Up</h1>
+      </div>
+    </div> 
+  </div> <!-- / .row -->
+  <div class="row">
+    <div class="col-md-offset-2 col-lg-8">
+      <div class="body-plain__form">
+
+        <!-- Sign Up form -->
+        <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {multipart: true}) do |f| %>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <%= f.text_field :first_name, autocomplete: "off", placeholder: "First Name", hide_label: true %>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <%= f.text_field :last_name, autocomplete: "off", placeholder: "Last Name", hide_label: true %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <%= f.email_field :email, autofocus: true, id: "sign-up__email", placeholder: "Enter email", hide_label: true %>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <%= f.text_field :mobile, autocomplete: "off", placeholder: "Mobile Number", hide_label: true %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <%= f.text_field :dob, autofocus: true, placeholder: "Birth Date(DD/MM/YYYY)", id: "datepicker", hide_label: true %>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <%= f.text_field :location, autocomplete: "off", placeholder: "Where Do You Live?", hide_label: true %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <%= f.password_field :password, autocomplete: "off", id: "sign-up__password", placeholder: "Password", hide_label: true %>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <%= f.password_field :password_confirmation, autocomplete: "off", id: "sign-up__password", placeholder: "Repeat Password", hide_label: true %>
+                </div>
+              </div>
+            </div>
+            <h4>Select Your Photo</h4>
+            <%= f.file_field :avatar, hide_label: true %>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+            </label>
+          </div>
+          <%= f.submit "Create Account", class: "btn btn-primary btn-block btn-lg" %>
+        <% end %>
+
+        <!-- Sign In link -->
+        <hr />
+        <p>Already a member? <%= link_to "Sign into your account.", new_user_session_path%></p>
+      </div> <!-- / .body-plain__form -->
+    </div>
+  </div> <!-- / .row -->
+</div> <!-- / .container -->

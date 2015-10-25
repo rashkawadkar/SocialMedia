@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SocialMedia</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="img/favicon.ico">
+
+  <!-- CSS Global -->
+
+  <!-- CSS Plugins -->
+  <!-- Google Fonts --> 
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+</head>
+<body>
+  <% if user_signed_in? %>
+      <div class="navbar__hr hidden-xs hidden-sm"></div>
+
+
+    <!-- STATIC NAVBAR
+    ============================== -->
+    <div class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <!-- Toggle button -->
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- Brand name -->
+          <a class="navbar-brand" href="index.html">Social Media</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <!-- Navbar links -->
+          <ul class="nav navbar-nav navbar-right">
+
+
+            <li><%= link_to "Home", home_path %></li>
+            <li><%= link_to "Profile", users_path %></li>
+            <li><%= link_to "My Buddies", buddies_path %></li>
+            <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete%></li>
+          </ul>
+        </div> <!-- / .navbar-collapse -->
+      </div> <!-- / .container -->
+    </div> <!-- / .navbar -->
+  <% end %>
+  <%= bootstrap_flash %>
+  <%= yield %>
+
+ 
+    <!-- FOOTER
+    ============================== -->
+    <footer>
+      <!-- Footer Bottom -->
+      <div class="footer_bottom">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6">
+              <div class="footer__copyright">
+                Copyright 2015 <a href="#">www.socialmedia.com</a>. All Rights Reserved.
+              </div>
+            </div>
+          </div> <!-- / .row -->
+        </div> <!-- / .container -->
+      </div> <!-- / .footer_bottom -->
+    </footer>
+</body>
+</html>

@@ -1,0 +1,98 @@
+   <!-- PAGE CONTENT
+    ============================== -->
+    <div class="profile__header">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4 col-md-3 col-lg-2">
+          <!-- User avatar -->
+            <div class="profile__avatar">
+              <%= image_tag current_user.avatar.url, class: "img-responsive center-block" %>
+            </div>
+          </div>
+          <div class="col-sm-8 col-md-9 col-lg-10">
+            <div class="profile__summary">
+              <!-- User name --> 
+              <h3 class="profile__name">
+                <%= current_user.first_name%>
+                <%= current_user.last_name%>
+              </h3>
+              <!-- User status -->
+              <p class="text-muted">
+                <%= current_user.statuses.last.message unless current_user.statuses.last.nil? %>
+              </p>
+              <!-- Contact -->
+              <%= mail_to current_user.email, 'Contact', subject: 'Feedback', class: "fa fa-envelope btn btn-primary btn-sm" %>
+              <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "fa fa-sign-out btn btn-default btn-sm" %>
+            </div> <!-- / .profile__summary -->
+          </div>
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+    </div> <!-- .profile__header -->
+    <div class="container">
+      <div class="row">
+      <div class="col-sm-4 col-md-3 col-lg-2">
+
+      </div>
+        <div class="col-sm-8 col-md-9 col-lg-10">
+          <!-- Tabs -->
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+              <a href="#personal-info" aria-controls="personal-info" role="tab" data-toggle="tab">Personal Info</a>
+            </li>
+            <li role="presentation">
+              <a href="#user-portfolio" aria-controls="user-portfolio" role="tab" data-toggle="tab">Post</a>
+            </li>
+          </ul>
+          <!-- Tab content -->
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="personal-info">
+              <h3 class="header header_plain">Personal Info</h3>
+              <div class="table-responsive">
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <th scope="row">First Name</th>
+                      <td><%= current_user.first_name %></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Last Name</th>
+                      <td><%= current_user.last_name %></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Email</th>
+                      <td><%= current_user.email %></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Mobile</th>
+                      <td><%= current_user.mobile %></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Birthday</th>
+                      <td><%= current_user.dob.strftime("%d/%m/%y") %></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Location</th>
+                      <td><%= current_user.location %></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Member Since</th>
+                      <td><%= current_user.created_at.year %></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div> <!-- / .table-responsive -->
+            </div>
+            <div role="tabpanel" class="tab-pane" id="user-portfolio">
+              <h3 class="header header_plain">Update Your Status</h3>
+              <div class="row col-md-8">
+                <%= bootstrap_form_for(@status) do |f| %>
+                  <%= f.text_area :message, placeholder: "Share your staus...", hide_label: true %>
+                  <%= f.submit "Share", class: "btn-primary btn" %>
+                <% end %>  
+              </div>
+              <br>
+            </div>
+          </div> <!-- / .tab-content -->
+        </div>
+      </div> <!-- / .row -->
+    </div> <!-- / .container -->

@@ -1,0 +1,63 @@
+    <!-- PAGE HEADER
+    ============================== -->
+    <div class="page__header">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <h3 class="page-header__title">Updates from Buddies</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- PAGE CONTENT
+    ============================== -->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4 col-md-3">
+          <!-- Categories -->
+          <h3 class="header header_plain">More...</h3>
+          <ul class="list-unstyled profile-social">
+            <li>
+              <a href="#" class="btn btn-default btn-block">Events</a>
+            </li>
+            <li>
+              <a href="#" class="btn btn-default btn-block">Pages</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-sm-8 col-md-6">
+          <h3 class="header header_plain">Listing Updates</h3>
+          
+          <div class="list-group">
+            <table>
+            <% @posts.each do |s| %>
+            <tr>
+              <td>
+            <a href="#" class="list-group-item">
+              <%= image_tag User.find(s.user_id).avatar.url, class: "img-responsive list-group-item__img" %>
+              <div class="list-group-item__content">
+                <h4 class="list-group-item-heading"><%= User.find(s.user_id).first_name%>&nbsp<%= User.find(s.user_id).last_name%></h4>
+                <p class="list-group-item-text">
+                  <%= s.message %>
+                </p>
+              </div>
+              <div class="clearfix"></div>
+            </a>
+          </td>
+            </tr>
+            <% end %>
+          </table>
+          </div>
+          <%= paginate @posts %>
+        </div>
+
+        <div class="col-md-3 hidden-sm">
+          <div class="profile__avatar">
+            <%= image_tag current_user.avatar.url, class: "img-responsive center-block" %>
+          </div>
+        </div>
+
+      </div> <!-- / .row -->
+    </div> <!-- / .container -->

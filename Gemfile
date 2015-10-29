@@ -42,6 +42,7 @@ gem 'paperclip'
 gem 'kaminari'
 gem 'font-awesome-rails'
 gem 'letter_opener', '1.4.1'
+gem 'pg'
 
 
 group :development, :test do

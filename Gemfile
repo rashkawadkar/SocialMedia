@@ -43,6 +43,8 @@ gem 'kaminari'
 gem 'font-awesome-rails'
 gem 'letter_opener', '1.4.1'
 gem 'pg'
+gem 'rails_12factor', '0.0.3'
+gem 'heroku', '3.39.1'
 
 
 group :development, :test do
